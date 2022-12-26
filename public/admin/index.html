@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Dashboard - PlateScan System</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- SB Admin CSS -->
+    <link href="../css/sb-admin.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="../css/plugins/morris.css" rel="stylesheet">
+
+    <!-- Font Awesome CSS -->
+    <link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Ionicons CSS -->
+    <link rel="stylesheet" href="../css/Ionicons/css/ionicons.min.css">
+
+    <!-- AdminLTE CSS -->
+    <link rel="stylesheet" href="../css/AdminLTE.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top nav-col navbar-static-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <!-- Header -->
+            <header class="main-header">
+    <!-- Logo -->
+    <a href="../admin" class="logo">
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg white-col-nav"><img src="../image/platelogowhite.png" class="pull-left image pad-img" width="50" height="50" />Admin Panel</span>
+    </a>
+      <!-- Sidebar toggle button-->
+      <a href="#" class="sidebar-toggle white-col-nav" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+        <span class="sr-only">Toggle navigation</span>
+      </a>
+                              <!-- Top Menu Items -->
+                              <ul class="nav navbar-right top-nav pull-right hide-nav white-col-nav">    
+            <li class="user user-menu dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>  <strong id="user_name_side_mobile"><i class="fa fa-spin ion-load-c"></i></strong>  <i class="ion-arrow-down-b"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right col-xs-12" role="menu">
+            <li class="dropdown-item"><a href="javascript:;" data-toggle="modal" data-target="#settingmodal"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-item"><a href="javascript:;" onclick="logout()"><span class="glyphicon glyphicon-off"></span> Log Out</a></li>
+            </ul>
+            </li>
+            </ul>
+      </div>
+      <!-- /.navbar-header -->
+                        <!-- Top Menu Items -->
+                        <ul class="nav navbar-right top-nav pull-right hidden-xs">    
+            <li class="user user-menu dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-user"></span>  <strong id="user_name_side"><i class="fa fa-spin ion-load-c"></i></strong>  <i class="ion-arrow-down-b"></i></a>
+            <ul class="dropdown-menu dropdown-menu-right col-xs-12" role="menu">
+            <li class="dropdown-item"><a href="javascript:;" class="dropdown-toggle" data-toggle="collapse" data-target="#setting"><span class="glyphicon glyphicon-cog"></span> Settings</a></li>
+            <li class="divider"></li>
+            <li class="dropdown-item"><a href="javascript:;" onclick="logout()"><span class="glyphicon glyphicon-off"></span> Log Out</a></li>
+            </ul>
+            </li>
+            </ul>
+            </header>
+            <!-- /.header -->
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav nav-sidebar side-col">  
+                <!--<br><p class="text-center"><strong><sup>MAIN NAVIGATION</sup></strong></p>-->  
+                    <li class="active">
+                        <a href="../admin"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="platenumber.html"><i class="fa fa-fw ion-android-car"></i> Plate Number</a>
+                    </li>
+                    <!--
+                    <li>
+                      <a href="user.html"><i class="fa fa-fw ion-person"></i>  Users</a>
+                  </li>
+                -->
+                  <li>
+                    <a href="logs.html"><i class="fa fa-fw fa-book"></i> Audit Log </a>
+                </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#setting"><i class="fa fa-fw fa-gear"></i> Settings <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="setting" class="collapse">
+                            <li>
+                                <a href="javascript:;" data-toggle="modal" data-target="#editInfo"><i class="fa fa-fw ion-information-circled"></i>  Edit Information</a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" onclick="changepass()"><i class="fa fa-fw ion-locked"></i>  Change Password</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav><div id="page-wrapper">    
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+
+    <section class="content-header">
+      <h1>
+        <b>Dashboard</b>
+      </h1>
+      <ol class="breadcrumb">
+        <li  class="active"><i class="fa fa-dashboard"></i>  Dashboard</li>
+      </ol>
+      </section>
+      <!-- /.Section -->
+        <!-- /.row -->
+        <section class="content">
+ <!-- add setting modal for small device -->
+ <div class="modal fade" id="settingmodal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog-center modal-dialog modal-sm">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3><i class="fa ion-ios-gear"></i>  <strong>Settings</strong></h3>
+        </div>
+        <div class="modal-body text-center">
+        <form>
+         <div class="form-group">
+         <a href="users.php" class="btn btn-info" role="button">Users</a>
+         <a href="editinfo.php" class="btn btn-info" role="button">Edit Information</a>
+         <a href="changepass.php" class="btn btn-info" role="button">Change Password</a>
+         </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+    </form>
+        </div>
+    </div>
+  </div>
+</div>
+<hr>
+    <!-- add modal for Plate Number info -->
+    <div class="modal fade" id="editInfo" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="ion-ios-list-outline"></i>  Edit Info</h3>
+            </div>
+            <div class="modal-body">
+                    <div class="form-row">
+                    <div class="form-group">  
+                            <label>Name</label>
+                        <input type="text" id="ename" class="form-control" placeholder="Name" autocomplete="off" required autofocus/>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="modalAddBtn" class="btn btn-primary" onclick="editInfo()" data-dismiss="modal"><i class="fa ion-android-checkmark-circle"></i> Save</button>
+            </div>
+        </div>
+      </div>
+    </div>
+        <div class="row">
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-aqua">
+            <div class="inner">
+              <h3 id="plateNo"><i class="fa fa-spin ion-load-c"></i></h3>
+
+              <p>Plate Numbers</p>
+            </div>
+            <div class="icon">
+             <i class="ion-android-car"></i>
+            </div>
+            <a href="platenumber.html" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-green">
+            <div class="inner">
+              <h3 id="userNo"><i class="fa fa-spin ion-load-c"></i></h3>
+
+              <p>Users</p>
+            </div>
+            <div class="icon">
+              <i class="ion-person-stalker"></i>
+            </div>
+            
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-4 col-xs-6">
+          <!-- small box -->
+          <div class="small-box bg-red">
+            <div class="inner">
+              <h3 id="logNo"><i class="fa fa-spin ion-load-c"></i></h3>
+
+              <p>Logs</p>
+            </div>
+            <div class="icon">
+              <i class="ion-document-text"></i>
+            </div>
+            <a href="logs.html" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <!-- /.row -->
+        </section>
+<!-- /.Section -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+<!-- /#page-wrapper -->    
+
+    <!-- jQuery Version 1.11.0 -->
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/myscript.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="../js/bootstrap.min.js"></script>
+
+    <!-- Ionicon icons-->
+    <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="../js/plugins/morris/raphael.min.js"></script>
+    <script src="../js/plugins/morris/morris.min.js"></script>
+    <script src="../js/plugins/morris/morris-data.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+    <script src="../js/admin/index.js"></script>
+    </div>
+    <!-- /#wrapper -->
+</body>
+
+</html>

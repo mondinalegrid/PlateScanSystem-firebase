@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PlateScan System</title>
+ <!-- Custom CSS -->
+<link href="css/custom.css" rel="stylesheet">
+ <!-- Bootstrap Core CSS -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- SB Admin CSS -->
+<link href="css/sb-admin.css" rel="stylesheet">
+    <!-- Font Awesome CSS -->
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- Ionicons CSS -->
+    <link rel="stylesheet" href="css/Ionicons/css/ionicons.min.css">
+</head>
+
+<body style="margin-top: 0px;">
+
+	
+    <div class="container">
+    <br><br><br><br>
+        <div class="card card-container rounded">
+                <div class="text-center">
+                        <img draggable="false" style="padding-top: 10px;" src="image/platelogowhite.png" width="150" height="140"/>
+                      </div>
+        <h2 class='login_title text-center'>PlateScan</h2>
+        <hr>
+
+            <div class="form-signin">
+                <span id="reauth-email" class="reauth-email"></span>
+                <p class="input_title">Email</p>
+                <input type="email" id="inputEmail" name="email" class="login_box rounded-text" placeholder="Email" autocomplete="off" required autofocus />
+                <p class="input_title">Password</p>
+                <input type="password" id="inputPassword" name="pass" class="login_box rounded-text" placeholder="Password" autocomplete="off" required>
+                <strong id="errorMessage" class="text-danger hidden">
+                        </strong>      
+                <button id="loginbtn" class="btn btn-lg btn-primary disabled" onclick="login()"><i class="fa fa-spin ion-load-c"></i></button>
+            </div><!-- /form -->
+        </div><!-- /card-container -->
+    </div><!-- /container -->
+    <!-- jQuery Version 1.11.0 -->
+    <script src="js/jquery.min.js"></script>
+        <!-- Ionicon icons-->
+        <script src="https://unpkg.com/ionicons@4.5.5/dist/ionicons.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/5.8.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.8.2/firebase.js"></script>
+<script src="js/index.js"></script>
+</body>
+</html>
